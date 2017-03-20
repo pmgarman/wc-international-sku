@@ -12,13 +12,18 @@ if ( ! class_exists( 'WC_International_SKU' ) ) {
         public function __construct() {
             $this->admin = new WC_International_SKU_Admin();
 
-            add_filter( 'woocommerce_get_sku', array( $this, 'filter_sku' ), 10, 2 );
+            add_filter( 'woocommerce_product_get_sku', array( $this, 'filter_sku' ), 10, 2 );
+            add_filter( 'woocommerce_product_variation_get_sku', array( $this, 'filter_sku' ), 10, 2 );
+
             add_filter( 'woocommerce_order_item_product', array( $this, 'filter_product_from_item' ), 10, 2 );
 
             /**
              * Adds support for WC 2.6 (maybe lower)
              */
-            add_filter( 'woocommerce_get_product_from_item', array( $this, 'legacy_filter_product_from_item' ), 10, 3 );
+            if( version_compare( WC_VERSION, 3, '<' ) ) {
+                add_filter( 'woocommerce_get_product_from_item', array( $this, 'legacy_filter_product_from_item' ), 10, 3 );
+                add_filter( 'woocommerce_get_sku', array( $this, 'filter_sku' ), 10, 2 );
+            }
         }
 
         public function filter_sku( $sku, $product ) {
