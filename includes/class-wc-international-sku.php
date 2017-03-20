@@ -44,9 +44,9 @@ if ( ! class_exists( 'WC_International_SKU' ) ) {
         public function is_order_international( $order ) {
             $order = wc_get_order( $order );
 
-            $billing_country = method_exists( $order, 'get_billing_country' ) ? $order->get_billing_country() : $order->billing_country;
+            $shipping_country = method_exists( $order, 'get_shipping_country' ) ? $order->get_shipping_country() : $order->shipping_country;
 
-            return $billing_country != WC()->countries->get_base_country();
+            return $shipping_country != WC()->countries->get_base_country();
         }
 
         public function filter_product_from_item( $product, $order_item ) {
