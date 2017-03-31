@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Plugin Name: WooCommerce - International Product SKUs
  * Description: Add a secondary SKU for products sold outside of the base country.
  * Author: Patrick Garman
@@ -22,7 +22,11 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
+
+/**
+ * Made with support from Gun.io, the Professional Freelancer network that nurtures the open source community.
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
